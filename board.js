@@ -2,10 +2,13 @@
   
   var SnakeGame = root.SnakeGame = (root.SnakeGame || {});
   
-  var Board = SnakeGame.Board = function(snake) {
-    this.snake = snake;
+  var Board = SnakeGame.Board = function() {
+    
     this.board = this.buildBoard();
-    // this.apples = this.placeApples();
+    this.apple = new SnakeGame.Apple;
+    this.placeApple();
+    
+    this.snake = new SnakeGame.Snake(this);
   };
   
   Board.prototype.buildBoard = function () {
@@ -29,13 +32,25 @@
     }
   }
   
+  Board.prototype.placeApple = function () {
+    var y = this.apple.position[0];
+    var x = this.apple.position[1];
+    this.board[y][x] = "A"
+  }
+  
   Board.prototype.removeSnake = function () {
     var segments = this.snake.segments;
     for (var i = 0; i < segments.length; i++) {
       var y = segments[i][0];
       var x = segments[i][1];
-      this.board[y][x] = null
+      this.board[y][x] = null;
     }
+  };
+  
+  Board.prototype.removeApple = function () {
+    var y = this.apple.position[0];
+    var x = this.apple.position[1];
+    this.board[y][x] = null;
   }
   
   Board.prototype.render = function () {
@@ -50,9 +65,9 @@
           row = row.concat(board[i][j])
         }
       }
-      console.log(row);
       result = result.concat(row, "\n");
     }
+    console.log(result);
     return result;
   }
   

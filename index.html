@@ -1,13 +1,15 @@
 <html>
   <head>
     <script src="./jquery.js"></script>
+    <script src="./underscore.js"></script>
     <script src="./keymaster.js"></script>
     <script src="./snake.js"></script>
     <script src="./board.js"></script>
+    <script src="./apple.js"></script>
     <script src="./snake_ui.js"></script>
   </head>
   <body>
-    <div id="game-board">Hey there</div>
+    <div id="game-board" class="game-board group">Hey there</div>
     
     <script>
       $(function() {
@@ -20,10 +22,50 @@
   </body>
 </html>
 
-<!-- <style>
-#game-board {
-  height: 100px;
-  width: 100px;
-  border: 2px solid red;
+<style>
+
+ul, li, div {
+  padding: 0;
+  border: 0;
+  margin: 0;
 }
-</style> -->
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.game-board {
+  height: 484px;
+  width: 484px;
+  margin: auto;
+}
+
+.game-board ul {
+  list-style: none;
+}
+
+.game-board li {
+  margin: 1px;
+  display: block;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 18px;
+  width: 18px;
+  float: left;
+}
+
+.border {
+  background: black;
+}
+
+.snake {
+  background: pink;
+}
+
+.apple {
+  background: red;
+}
+
+</style>

@@ -40,10 +40,22 @@
   View.prototype.start = function () {
     var board = this.board
     
-    key('a', function () { board.snake.turn("W") });
-    key('w', function () { board.snake.turn("N") });
-    key('d', function () { board.snake.turn("E") });
-    key('s', function () { board.snake.turn("S") });
+    key('a', function () { 
+      board.snake.turn("W");
+      step();
+    });
+    key('w', function () { 
+      board.snake.turn("N");
+      step();
+    });
+    key('d', function () {
+      board.snake.turn("E");
+      step();
+    });
+    key('s', function () {
+      board.snake.turn("S");
+      step();
+    });
     var that = this;
     var step = function () {
 

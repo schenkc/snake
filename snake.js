@@ -46,7 +46,22 @@
   }
   
   Snake.prototype.validMove = function (newHead) {
-    return this.onBoard(newHead) && !(_.contains(this.segments, newHead))
+    return this.onBoard(newHead) && this.hasSegment(newHead)
+  }
+  
+  Snake.prototype.hasSegment = function(newHead) {
+    var segments = this.segments;
+    var truthy = true;
+    for (var i = 0; i < segments.length; i++ ) {
+      if ( segments[i][0] === newHead[0] && segments[i][1] === newHead[1]) {
+        truthy = false;
+        break;
+      } else {
+        truthy = true;
+      }
+    }
+    
+    return truthy;
   }
   
   Snake.prototype.turn = function(dir) {

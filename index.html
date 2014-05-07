@@ -7,6 +7,23 @@
     <script src="./snake_ui.js"></script>
   </head>
   <body>
-    <div class="game-board"></div>
+    <div id="game-board">Hey there</div>
+    
+    <script>
+      $(function() {
+        var game = new SnakeGame.View({
+          $el: $("#game-board")
+        });
+        game.start();
+      });
+    </script>
   </body>
 </html>
+
+<!-- <style>
+#game-board {
+  height: 100px;
+  width: 100px;
+  border: 2px solid red;
+}
+</style> -->

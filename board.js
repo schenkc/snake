@@ -29,8 +29,18 @@
     }
   }
   
+  Board.prototype.removeSnake = function () {
+    var segments = this.snake.segments;
+    for (var i = 0; i < segments.length; i++) {
+      var y = segments[i][0];
+      var x = segments[i][1];
+      this.board[y][x] = null
+    }
+  }
+  
   Board.prototype.render = function () {
     var board = this.board;
+    var result = ""
     for (var i = 0; i < board.length; i++) {
       var row = "";
       for (var j = 0; j < board.length; j++) {
@@ -41,7 +51,9 @@
         }
       }
       console.log(row);
+      result = result.concat(row, "\n");
     }
+    return result;
   }
   
 })(this);

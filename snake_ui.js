@@ -2,29 +2,38 @@
   
   var SnakeGame = root.SnakeGame = (root.SnakeGame || {});
   
-  var View = SnakeGame.View = function ($el) {
-    this.$el = $el
-  }
+  var View = SnakeGame.View = function (options) {
+    this.$el = options.$el
+  };
+  
+  View.prototype.render = function () {
+    
+  };
   
   View.prototype.start = function () {
     var snake = new SnakeGame.Snake();
-    var game = new SnakeGame.Board(snake);
+    var board = new SnakeGame.Board(snake);
     
-    key('a', function () { game.snake.turn("W") });
-    key('w', function () { game.snake.turn("N") });
-    key('d', function () { game.snake.turn("E") });
-    key('s', function () { game.snake.turn("S") });
+    
+    key('a', function () { board.snake.turn("W") });
+    key('w', function () { board.snake.turn("N") });
+    key('d', function () { board.snake.turn("E") });
+    key('s', function () { board.snake.turn("S") });
     var that = this;
     var step = function () {
-      that.$el.remove()
-      that.$el.html("<pre>" + game.render() + "</pre>");
-      snake.move();      
+      board.removeSnake();
+      board.snake.move();
+      board.placeSnake();
+      board.render();
+      
+      // that.$el.remove()
+      that.$el.html("<pre>" + board.render() + "</pre>");
+      console.log(that.$el)
     }
-    
-    // setInterval(step, 1000);
-  }
+    step();
+    setInterval(step, 5000);
+  };
   
 })(this);
 
-var game = new SnakeGame.View($(".game-board"));
-game.start();
+

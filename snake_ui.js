@@ -63,7 +63,6 @@
       board.placeApple();
       board.render();
       
-      // that.$el.remove()
       that.$el.html(that.setupView());
       that.render();
       

@@ -10,6 +10,7 @@
   <body>
     <div id="game-board" class="game-board group">Hey there</div>
     
+    <div class="instructions"><p><strong>a</strong>, <strong>w</strong>, <strong>d</strong>, and <strong>s</strong> will move you around the board.  Eat the apples, but don't run into yourself.  <a href="schenkc.com">Read more about me.</a></p></div>
     <script>
       $(function() {
         var game = new SnakeGame.View({
@@ -23,10 +24,11 @@
 
 <style>
 
-ul, li, div {
+ul, li, div, p, a {
   padding: 0;
   border: 0;
   margin: 0;
+  font: inherit;
 }
 
 .group:after {
@@ -65,6 +67,21 @@ ul, li, div {
 
 .apple {
   background: red;
+}
+
+.instructions {
+  width: 484px;
+  margin: auto;
+  margin-top: 24px;
+  font-size: 24px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #777;
 }
 
 </style>
